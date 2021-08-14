@@ -3,22 +3,13 @@
 
 Game::Game() { this->initWindow(); }
 
-Game::~Game()
-{
-	delete this->player;
-}
+Game::~Game() { delete this->player; }
 
 void Game::initWindow() { this->window.create(sf::VideoMode(800, 600), "Platformer", sf::Style::Close | sf::Style::Titlebar); }
 
-void Game::initPlayer()
-{
-	this->player = new Player();
-}
+void Game::initPlayer() { this->player = new Player(); }
 
-void Game::updatePlayer()
-{
-	this->player->update();
-}
+void Game::updatePlayer() { this->player->update(); }
 
 void Game::renderPlayer(sf::RenderTarget& target)
 {
@@ -36,9 +27,6 @@ void Game::update()
 	this->updatePlayer();
 }
 
-void Game::render()
-{
-	this->window.clear(sf::Color(255, 255, 255, 255));
-}
+void Game::render() { this->window.clear(sf::Color(255, 255, 255, 255)); }
 
 const sf::RenderWindow& Game::getWindow() const { return this->window; }
