@@ -1,6 +1,5 @@
 #pragma once
 
-#include "prcHead.h"
 #include "Player.h"
 
 class Game
@@ -18,9 +17,11 @@ class Game
 		Game();
 		virtual ~Game();
 
+		void updateCollision();
 		void updatePlayer();
-		void renderPlayer(sf::RenderTarget &target);
 		void update();
+
+		void renderPlayer();
 		void render();
 
 		const sf::RenderWindow& getWindow() const;
