@@ -20,13 +20,14 @@ class Player
 		float gravity, acceleration, drag, maxVelocity, minVelocity, maxVelocityY;
 		short animeState;
 		bool animeSwitch;
+		bool inAir;
 
 	public : 
 		Player();
-		virtual ~Player();
 
 		void resetAnimationTimer();
 		void move(const float dir_x, const float dir_y);
+		void jump();
 		
 		void setPosition(const float pos_x, float pos_y);
 		const sf::Vector2f getPosition() const;

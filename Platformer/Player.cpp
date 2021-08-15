@@ -34,11 +34,6 @@ Player::Player()
 	this->initPhysics();
 }
 
-Player::~Player()
-{
-
-}
-
 void Player::updateMouvement()
 {
 	this->animeState = PLAYER_ANIMATION_STATES::IDLE;
@@ -46,6 +41,9 @@ void Player::updateMouvement()
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Q)) { this->move(-1.f, 0.f); this->animeState = PLAYER_ANIMATION_STATES::MOVING_LEFT; }
 
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::D)) { this->move(1.f, 0.f), this->animeState = PLAYER_ANIMATION_STATES::MOVING_RIGHT; }
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Space)) { /*Jump function*/ this->animeState = PLAYER_ANIMATION_STATES::JUMPING; }
+
 }
 
 void Player::updateAnimations()
