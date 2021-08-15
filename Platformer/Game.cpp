@@ -3,17 +3,19 @@
 
 const sf::RenderWindow& Game::getWindow() const { return this->window; }
 
-Game::Game() { this->initWindow(); this->initPlayer(); }
+Game::Game() { this->initWindow(); this->initPlayer(); this->initAudio(); }
 
-Game::~Game() { delete this->player; }
+Game::~Game() { delete this->player; this->audGame->~AudioGame(); }
 
 //
 // Initializing the game
 //
 
-void Game::initWindow() { this->window.create(sf::VideoMode(1366, 720), "Platformer", sf::Style::Close | sf::Style::Titlebar); this->window.setFramerateLimit(60); }
+void Game::initWindow() { this->window.create(sf::VideoMode(1366, 720), "Platformer", sf::Style::Close | sf::Style::Titlebar); this->window.setFramerateLimit(62); }
 
 void Game::initPlayer() { this->player = new Player(); }
+
+void Game::initAudio() { this->audGame = new AudioGame(); this->audGame->playBGM(); }
 
 //
 // Updating the game

@@ -148,7 +148,4 @@ const bool& Player::getAnimeSwitch()
 	return localAnimeSwitch;
 }
 
-const sf::Vector2f Player::getPosition() const
-{
-	return this->sprite.getPosition();
-}
+const sf::Vector2f Player::getPosition() const { return this->sprite.getPosition(); }

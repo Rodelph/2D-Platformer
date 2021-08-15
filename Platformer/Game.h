@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Player.h"
+#include "AudioGame.h"
 
 class Game
 {
@@ -9,6 +10,7 @@ class Game
 		sf::Event ev;
 
 		Player *player;
+		AudioGame *audGame;
 
 		void initWindow();
 		void initPlayer();
@@ -17,6 +19,7 @@ class Game
 		Game();
 		virtual ~Game();
 
+		void initAudio();
 		void updateCollision();
 		void updatePlayer();
 		void update();
