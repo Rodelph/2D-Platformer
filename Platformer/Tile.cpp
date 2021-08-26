@@ -7,15 +7,8 @@ Tile::Tile(sf::Texture& texture_sheet, sf::IntRect texture_rect, bool damaging) 
 	this->sprite.setTextureRect(texture_rect);
 }
 
-Tile::~Tile()
-{
 
-}
-
-const sf::FloatRect Tile::getGlobalBounds() const
-{
-	return this->sprite.getGlobalBounds();
-}
+const sf::FloatRect Tile::getGlobalBounds() const { return this->sprite.getGlobalBounds(); }
 
 void Tile::update()
 {

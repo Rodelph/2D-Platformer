@@ -5,7 +5,9 @@
 class TileMap
 {
 	private:
-		std::vector<std::vector<Tile*>> tiles;
+		unsigned gridSizeU, layers;
+		sf::Vector2u maxSize;
+		std::vector<std::vector<std::vector<Tile>>> tiles;
 
 	public :
 		TileMap();
