@@ -1,6 +1,5 @@
 #include <cstdlib>
 #include <ctime>
-#include <iostream>
 #include <time.h>
 
 // SFML API
@@ -9,3 +8,5 @@
 #include <SFML/Audio.hpp>
 #include <SFML/Window.hpp>
 #include <SFML/System.hpp>
+
+#include "IOFile.h"

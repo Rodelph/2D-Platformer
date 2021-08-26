@@ -168,7 +168,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="AudioGame.h" />
+    <ClInclude Include="EnergyBar.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="HpBar.h" />
+    <ClInclude Include="IOFile.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="prcHead.h" />
     <ClInclude Include="Tile.h" />
@@ -176,7 +179,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AudioGame.cpp" />
+    <ClCompile Include="EnergyBar.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="HpBar.cpp" />
+    <ClCompile Include="IOFile.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="prcHead.cpp">

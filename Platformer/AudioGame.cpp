@@ -1,5 +1,8 @@
 #include "prcHead.h"
 #include "AudioGame.h"
+#include "IOFile.h"
+
+
 
 AudioGame::AudioGame() { this->initAudio(); }
 
@@ -7,11 +10,11 @@ AudioGame::~AudioGame() { this->stopBGM(); this->stopSFX(); }
 
 void AudioGame::initAudio()
 {
-	if (!this->bufferSfx.loadFromFile("src/SFX/hit.wav")) { std::cout << "INFO::GAME::SFX:: SFX files not loaded !!" << std::endl; }
-	else { this->bufferSfx.loadFromFile("src/SFX/hit.wav"); }
+	if (!this->bufferSfx.loadFromFile(IOFile::getMusicSfxDir())) { std::cout << IOFile::getMusicSfxError() << std::endl; }
+	else { this->bufferSfx.loadFromFile(IOFile::getMusicSfxDir()); }
 
-	if (!this->bgm.openFromFile("src/Music/junna.wav")) { std::cout << "INFO::GAME::SFX:: SFX files not loaded !!" << std::endl; }
-	else { this->bgm.openFromFile("src/Music/junna.wav"); }
+	if (!this->bgm.openFromFile(IOFile::getMusicBgmDir())) { std::cout << IOFile::getMusicBgmError() << std::endl; }
+	else { this->bgm.openFromFile(IOFile::getMusicBgmDir()); }
 }
 
 void AudioGame::playSFX() { this->soundHit.play(); }

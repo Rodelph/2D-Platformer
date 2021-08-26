@@ -1,9 +1,14 @@
 #include "prcHead.h"
 #include "Game.h"
 
-const sf::RenderWindow& Game::getWindow() const { return this->window; }
-
-Game::Game() { this->initWindow(); this->initPlayer(); this->initAudio(); }
+Game::Game() 
+{ 
+	this->initWindow(); 
+	this->initPlayer(); 
+	this->initHpBar();
+	this->initEnerBar();
+	this->initAudio(); 
+}
 
 Game::~Game() { delete this->player; this->audGame->~AudioGame(); }
 
@@ -11,11 +16,19 @@ Game::~Game() { delete this->player; this->audGame->~AudioGame(); }
 // Initializing the game
 //
 
-void Game::initWindow() { this->window.create(sf::VideoMode(1366, 720), "Platformer", sf::Style::Close | sf::Style::Titlebar); this->window.setFramerateLimit(62); }
+void Game::initWindow() 
+{ 
+	this->window.create(sf::VideoMode(1366, 720), IOFile::getTitle(), sf::Style::Close | sf::Style::Titlebar); 
+	this->window.setFramerateLimit(62); 
+}
 
 void Game::initPlayer() { this->player = new Player(); }
 
 void Game::initAudio() { this->audGame = new AudioGame(); this->audGame->playBGM(); }
+
+void Game::initHpBar() { this->hpBar = new HpBar(); }
+
+void Game::initEnerBar() { this->enerBar = new EnergyBar(); }
 
 //
 // Updating the game
@@ -23,7 +36,6 @@ void Game::initAudio() { this->audGame = new AudioGame(); this->audGame->playBGM
 
 void Game::updateCollision()
 {
-	//Collision of the player with the bottom
 	if (this->player->getPosition().y + this->player->getGlobalBounds().height > this->window.getSize().y)
 	{
 		this->player->resetVelocityY();
@@ -40,15 +52,20 @@ void Game::update()
 {
 	while (this->window.pollEvent(this->ev))
 	{
-		if (this->ev.type == sf::Event::Closed) { this->window.close(); }
-		else if (this->ev.type == sf::Event::KeyPressed && this->ev.key.code == sf::Keyboard::Escape) { this->window.close(); }
+		if (this->ev.type == sf::Event::Closed) 
+		{ 
+			this->window.close(); 
+		}
+		else if (this->ev.type == sf::Event::KeyPressed && 
+				 this->ev.key.code == sf::Keyboard::Escape) 
+		{ 
+			this->window.close(); 
+		}
 
-		if (this->ev.type == sf::Event::KeyReleased && 
-			   ( this->ev.key.code == sf::Keyboard::Z || 
-				 this->ev.key.code == sf::Keyboard::Q ||
-				 this->ev.key.code == sf::Keyboard::S || 
-				 this->ev.key.code == sf::Keyboard::D )) 
-			{ this->player->resetAnimationTimer(); }
+		if (this->ev.type == sf::Event::KeyReleased && ( this->ev.key.code == sf::Keyboard::A || 
+														 this->ev.key.code == sf::Keyboard::Q ||
+														 this->ev.key.code == sf::Keyboard::D) ) 
+		{ this->player->resetAnimationTimer(); }
 	}
 
 	this->updatePlayer();
@@ -61,9 +78,17 @@ void Game::update()
 
 void Game::renderPlayer() { this->player->render(this->window); }
 
-void Game::render() 
+void Game::renderHpBar() { this->hpBar->renderHpBarBorder(this->window); this->hpBar->renderHpBarHealth(this->window); }
+
+void Game::renderEnerBar() { this->enerBar->renderEnergyBarBorder(this->window); this->enerBar->renderEnergyBarLevel(this->window); }
+
+void Game::Render() 
 { 
 	this->window.clear(sf::Color(255, 255, 255, 255)); 
 	this->renderPlayer();
+	this->renderHpBar();
+	this->renderEnerBar();
 	this->window.display();
 }
+
+const sf::RenderWindow& Game::getWindow() const { return this->window; }

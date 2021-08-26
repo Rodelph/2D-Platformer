@@ -9,7 +9,7 @@ void Player::initSprite()
 	this->sprite.setScale(2.f, 2.f);
 }
 
-void Player::initTexture() { if (!this->textureSheet.loadFromFile("src/Texture/player_sheet.png")) std::cout << "Info::GAME::Texture:: Failed to load textures" << "\n"; }
+void Player::initTexture() { if(!this->textureSheet.loadFromFile(IOFile::getPlayerSheetDir())) std::cout << IOFile::getPlayerSheetError() << "\n"; }
 
 void Player::initAnimations() { this->clock.restart(); this->animeSwitch = true; }
 
@@ -38,11 +38,20 @@ void Player::updateMouvement()
 {
 	this->animeState = PLAYER_ANIMATION_STATES::IDLE;
 
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Q)) { this->move(-1.f, 0.f); this->animeState = PLAYER_ANIMATION_STATES::MOVING_LEFT; }
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Q)) 
+	{ 
+		this->move(-1.f, 0.f); this->animeState = PLAYER_ANIMATION_STATES::MOVING_LEFT; 
+	}
+	else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::A)) 
+	{ 
+		this->move(-1.f, 0.f); this->animeState = PLAYER_ANIMATION_STATES::MOVING_LEFT; 
+	}
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::D)) 
+	{ 
+		this->move(1.f, 0.f), this->animeState = PLAYER_ANIMATION_STATES::MOVING_RIGHT; 
+	}
 
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::D)) { this->move(1.f, 0.f), this->animeState = PLAYER_ANIMATION_STATES::MOVING_RIGHT; }
-
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Space)) { /*Jump function*/ this->animeState = PLAYER_ANIMATION_STATES::JUMPING; }
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Space)) { this->animeState = PLAYER_ANIMATION_STATES::JUMPING; }
 
 }
 

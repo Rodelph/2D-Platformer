@@ -2,6 +2,8 @@
 
 #include "Player.h"
 #include "AudioGame.h"
+#include "HpBar.h"
+#include "EnergyBar.h"
 
 class Game
 {
@@ -10,22 +12,30 @@ class Game
 		sf::Event ev;
 
 		Player *player;
+		HpBar* hpBar;
 		AudioGame *audGame;
+		EnergyBar* enerBar;
 
 		void initWindow();
 		void initPlayer();
+		void initAudio();
+		void initHpBar();
+		void initEnerBar();
 
 	public :
 		Game();
 		virtual ~Game();
 
-		void initAudio();
 		void updateCollision();
 		void updatePlayer();
+		//void updateHpBar();
+		//void updateEnerBar();
 		void update();
 
+		void renderHpBar();
+		void renderEnerBar();
 		void renderPlayer();
-		void render();
+		void Render();
 
 		const sf::RenderWindow& getWindow() const;
 };
