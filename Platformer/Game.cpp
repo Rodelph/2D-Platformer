@@ -7,7 +7,7 @@ Game::Game()
 	this->initPlayer(); 
 	this->initHpBar();
 	this->initEnerBar();
-	this->initAudio(); 
+	this->initAudio();
 }
 
 Game::~Game() { delete this->player; this->audGame->~AudioGame(); }
@@ -62,10 +62,14 @@ void Game::update()
 			this->window.close(); 
 		}
 
-		if (this->ev.type == sf::Event::KeyReleased && 
-			( this->ev.key.code == sf::Keyboard::A || 
-			  this->ev.key.code == sf::Keyboard::Q ||
-			  this->ev.key.code == sf::Keyboard::D )) { this->player->resetAnimationTimer(); }
+		if (this->ev.type == sf::Event::KeyReleased	 &&
+			(this->ev.key.code == sf::Keyboard::A	 ||
+			 this->ev.key.code == sf::Keyboard::Q	 ||
+		   	 this->ev.key.code == sf::Keyboard::D	 ||
+		  	 this->ev.key.code == sf::Keyboard::Space)) 
+		{
+			this->player->resetAnimationTimer();
+		}
 	}
 
 	this->updatePlayer();
