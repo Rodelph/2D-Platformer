@@ -62,10 +62,10 @@ void Game::update()
 			this->window.close(); 
 		}
 
-		if (this->ev.type == sf::Event::KeyReleased && ( this->ev.key.code == sf::Keyboard::A || 
-														 this->ev.key.code == sf::Keyboard::Q ||
-														 this->ev.key.code == sf::Keyboard::D) ) 
-		{ this->player->resetAnimationTimer(); }
+		if (this->ev.type == sf::Event::KeyReleased && 
+			( this->ev.key.code == sf::Keyboard::A || 
+			  this->ev.key.code == sf::Keyboard::Q ||
+			  this->ev.key.code == sf::Keyboard::D )) { this->player->resetAnimationTimer(); }
 	}
 
 	this->updatePlayer();
@@ -78,9 +78,17 @@ void Game::update()
 
 void Game::renderPlayer() { this->player->render(this->window); }
 
-void Game::renderHpBar() { this->hpBar->renderHpBarBorder(this->window); this->hpBar->renderHpBarHealth(this->window); }
+void Game::renderHpBar() 
+{ 
+	this->hpBar->renderHpBarBorder(this->window); 
+	this->hpBar->renderHpBarHealth(this->window); 
+}
 
-void Game::renderEnerBar() { this->enerBar->renderEnergyBarBorder(this->window); this->enerBar->renderEnergyBarLevel(this->window); }
+void Game::renderEnerBar() 
+{ 
+	this->enerBar->renderEnergyBarBorder(this->window); 
+	this->enerBar->renderEnergyBarLevel(this->window); 
+}
 
 void Game::Render() 
 { 

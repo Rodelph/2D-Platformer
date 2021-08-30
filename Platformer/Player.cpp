@@ -11,9 +11,17 @@ void Player::initSprite()
 
 void Player::initTexture() { if(!this->textureSheet.loadFromFile(IOFile::getPlayerSheetDir())) std::cout << IOFile::getPlayerSheetError() << "\n"; }
 
-void Player::initAnimations() { this->clock.restart(); this->animeSwitch = true; }
+void Player::initAnimations() 
+{ 
+	this->clock.restart(); 
+	this->animeSwitch = true; 
+}
 
-void Player::initVariables() { this->animeState = PLAYER_ANIMATION_STATES::IDLE; this->animeSwitch = false; }
+void Player::initVariables() 
+{ 
+	this->animeState = PLAYER_ANIMATION_STATES::IDLE; 
+	this->animeSwitch = false; 
+}
 
 void Player::initPhysics()
 {
@@ -99,7 +107,10 @@ void Player::updateAnimations()
 		this->sprite.setScale(-2.0f, 2.0f);
 		this->sprite.setOrigin((this->sprite.getGlobalBounds().width / 2.f) - 13.f, 0.f);
 	}
-	else { this->clock.restart(); }
+	else 
+	{ 
+		this->clock.restart(); 
+	}
 }
 
 void Player::resetAnimationTimer() { this->clock.restart(); this->animeSwitch = true; }
