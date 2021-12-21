@@ -190,7 +190,7 @@ void Player::setPosition(const float pos_x, float pos_y) { this->sprite.setPosit
 
 const bool& Player::getAnimeSwitch()
 {
-	bool localAnimeSwitch = this->animeSwitch;
+	this->localAnimeSwitch = this->animeSwitch;
 
 	if (this->animeSwitch) { this->animeSwitch = false; }
 

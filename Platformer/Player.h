@@ -17,6 +17,8 @@ class Player
 		sf::Clock clock;
 		sf::Vector2f velocity;
 
+		bool localAnimeSwitch;
+
 		float gravity, acceleration, drag, maxVelocity, minVelocity, maxVelocityY;
 		short animeState;
 		bool animeSwitch;
