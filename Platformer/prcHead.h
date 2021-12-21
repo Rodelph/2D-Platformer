@@ -2,7 +2,7 @@
 #include <ctime>
 #include <time.h>
 #include <thread>
-
+#include <cmath>
 // SFML API
 
 #include <SFML/Graphics.hpp>
