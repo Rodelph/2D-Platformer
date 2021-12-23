@@ -59,11 +59,6 @@ void Player::updateMouvement()
 	{
 		this->move(1.f, 0.f), this->animeState = PLAYER_ANIMATION_STATES::MOVING_RIGHT;
 	}
-
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Space))
-	{
-		this->jump(3.f);  this->animeState = PLAYER_ANIMATION_STATES::JUMPING;
-	}
 }
 
 void Player::updateAnimations()
@@ -110,17 +105,6 @@ void Player::updateAnimations()
 		this->sprite.setScale(-2.0f, 2.0f);
 		this->sprite.setOrigin((this->sprite.getGlobalBounds().width / 2.f) - 13.f, 0.f);
 	}
-	else if (this->animeState == PLAYER_ANIMATION_STATES::JUMPING)
-	{
-		if (this->clock.getElapsedTime().asSeconds() >= 0.08f || this->getAnimeSwitch())
-		{
-			this->currentFrame.top = 100.f;
-			this->currentFrame.left += 40.f;
-			if (this->currentFrame.left > 100.f) { this->currentFrame.left = 0.f; }
-			this->clock.restart();
-			this->sprite.setTextureRect(this->currentFrame);
-		}
-	}
 	else if (this->animeState == PLAYER_ANIMATION_STATES::FALLING)
 	{
 		if (this->clock.getElapsedTime().asSeconds() >= 0.08f || this->getAnimeSwitch())
@@ -147,12 +131,6 @@ void Player::move(const float dir_x, const float dir_y)
 
 	//Limit velocity
 	if (std::abs(this->velocity.x) > this->maxVelocity) { this->velocity.x = this->maxVelocity * ((this->velocity.x < 0.f) ? -1.f : 1.f); }
-}
-
-void Player::jump(const float bounce)
-{
-	this->inAir = true;
-	this->velocity.y =  - 1 / 2 * this->gravity * std::pow(this->clock.getElapsedTime().asSeconds(), 2) - (this->gravity * bounce);
 }
 
 void Player::updatePhysics()
