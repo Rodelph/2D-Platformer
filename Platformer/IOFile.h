@@ -1,6 +1,6 @@
-#include <iostream>
-
 #pragma once
+
+#include <iostream>
 
 class IOFile
 {
@@ -11,7 +11,7 @@ class IOFile
 		inline static const std::string& musicSfxDir = "./src/SFX/hit.wav";
 		inline static const std::string& musicSfxError = "Info::GAME::SFX:: SFX files not loaded !!";
 
-		inline static const std::string& musicBgmDir = "./src/Music/junna.wav";
+		inline static const std::string& musicBgmDir = "./src/Music/background.wav";
 		inline static const std::string& musicBgmError = "INFO::GAME::BGM:: BGM files not loaded !!";
 
 		inline static const std::string&& gameTitle = "Platformer";

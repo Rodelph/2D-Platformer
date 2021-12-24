@@ -2,8 +2,6 @@
 #include "AudioGame.h"
 #include "IOFile.h"
 
-
-
 AudioGame::AudioGame() { this->initAudio(); }
 
 AudioGame::~AudioGame() { this->stopBGM(); this->stopSFX(); }
