@@ -14,6 +14,14 @@ You can download the latest zip "Visual C++ 15 (2017) - 64-bit" and in the direc
 
 Please build your project in release mode, and then put the DLL files (mentionned above) in the " x64/Release " folder right next to the .exe file of the project.
 
+To compile the project you can type the command : 
+
+./compile.sh
+
+If the file does not want to execute, or is not executable use this command to make compile.sh executable.
+
+chmod +x compile.sh
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 Enjoy !!
